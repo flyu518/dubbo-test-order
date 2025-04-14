@@ -1,0 +1,40 @@
+dubbo:
+  application: # 应用配置
+    name: order
+    module: simple-order
+    version: 1.0.0
+    environment: dev
+  registries: # 注册中心
+    nacos:
+      protocol: nacos
+      timeout: 10s
+      address: 127.0.0.1:8848
+  config-center: # 配置中心
+    protocol: nacos               # 配置中心协议 nacos / apollo / zookeeper / etcd
+    address: "127.0.0.1:8848"     # 配置中心地址
+    namespace: "dev"           # 命名空间（nacos 有用）
+    group: "order"                # 配置组
+    data-id: "server.yaml"         # 配置文件 dataId（nacos 用）
+    refresh: true                # 是否刷新配置
+  logger: # 日志配置
+    level: "info"
+    appender: "file" 
+    file:
+      name: "runtime/logs/dubbo.log" # 暂时不知道怎么取环境变量
+      maxSize: 100 # 100MB
+      maxBackups: 3 # 保留 3 个文件
+      maxAge: 300 # 300天
+      compress: true # 压缩
+  protocols: # 协议配置
+    tripleProtocol:
+      name: tri
+      port: 20001
+  provider: # 服务提供者配置
+    services:
+      OrderProvider:
+        interface: lingmou.simple.order.api.OrderService # proto文件中定义的服务名称
+  consumer: # 服务消费者配置
+    services:
+      UserConsumer:
+        interface: lingmou.simple.user.api.UserService
+        timeout: 10s

@@ -233,6 +233,8 @@ github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239/go.mod h1:Gdwt2ce0
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fatih/color v1.9.0/go.mod h1:eQcE1qtQxscV5RaZvpXrrb8Drkc3/DdQ+uUYCNjL+zU=
 github.com/fatih/structs v1.1.0/go.mod h1:9NiDSp5zOcgEDl+j00MP/WkGVPOlPRLejGD8Ga6PJ7M=
+github.com/flyu518/dubbo-test-sdk/order v1.0.0 h1:bKIFmUqi8vHy7b/AZwN30k3gDG/IaeARySF/WiNfZSY=
+github.com/flyu518/dubbo-test-sdk/order v1.0.0/go.mod h1:oVjharOUc2udnI179WpmB73ovd75STY50kN978v2wF4=
 github.com/flyu518/dubbo-test-sdk/user v1.0.0 h1:Rawk4skCICTm7DB8Aw/OwGYs89bwI+772SEbAE6SXvQ=
 github.com/flyu518/dubbo-test-sdk/user v1.0.0/go.mod h1:SYotKxGmHr7/15g/2vX4RoFUgKFu3r6jLhxJDYHARsM=
 github.com/fogleman/gg v1.2.1-0.20190220221249-0403632d5b90/go.mod h1:R/bRT+9gY/C5z7JzPU0zXsXHKM4/ayA+zqcVNZzPa1k=

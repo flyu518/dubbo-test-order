@@ -1,4 +1,4 @@
-module user
+module order
 
 go 1.24.1
 
@@ -98,6 +98,7 @@ require (
 	github.com/dubbogo/gost v1.14.0
 	github.com/dubbogo/grpc-go v1.42.10 // indirect
 	github.com/dubbogo/triple v1.2.2-rc4 // indirect
+	github.com/flyu518/dubbo-test-sdk/order v1.0.0
 	github.com/go-logr/logr v1.2.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
