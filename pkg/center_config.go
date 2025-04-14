@@ -18,7 +18,7 @@ type NacosConfig struct {
 type CenterConfig struct {
 	Namespace string `yaml:"namespace" json:"namespace"`
 	Group     string `yaml:"group" json:"group"`
-	DataID    string `yaml:"data-id" json:"data-id"`
+	DataID    string `yaml:"data_id" json:"data_id"`
 }
 
 // GetConfigCenterOption 返回配置中心选项

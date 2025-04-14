@@ -10,20 +10,12 @@ import (
 )
 
 func main() {
-	// 暂时写死，之后应该从环境变量读取
-	nacosConfig := pkg.NacosConfig{
-		Address:  "127.0.0.1:8848",
-		Username: "",
-		Password: "",
-	}
-	centerConfig := pkg.CenterConfig{
-		Namespace: "dev",
-		Group:     "order",
-		DataID:    "client.yaml",
-	}
+	// 通过环境变量获取配置
+	nacosConfig := pkg.GetNacosConfig()
+	centerConfig := pkg.GetCenterConfig()
 
 	// 获取 dubbo 实例和客户端
-	instance := pkg.GetDubboInstance(pkg.GetConfigCenterOption(&nacosConfig, &centerConfig))
+	instance := pkg.GetDubboInstance(pkg.GetConfigCenterOption(nacosConfig, centerConfig))
 	client := pkg.GetClient(instance)
 
 	// 获取服务
