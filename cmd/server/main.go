@@ -12,6 +12,7 @@ import (
 
 // 启动应用
 func main() {
+	// 暂时写死，之后应该从环境变量读取
 	nacosConfig := pkg.NacosConfig{
 		Address:  "127.0.0.1:8848",
 		Username: "",
