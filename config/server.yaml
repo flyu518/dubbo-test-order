@@ -1,21 +1,23 @@
 dubbo:
   application: # 应用配置
-    name: order
-    module: simple-order
-    version: 1.0.0
-    environment: dev
+    organization: lingmou # 组织名称
+    group: lingmou # 组名称
+    name: order # 应用名称
+    module: simple # 模块名称，多个实例可以用不同的名字区分
+    version: 1.0.0 # 版本号，不同版本可以共存
+    environment: dev # 部署环境
+    metadata-type: remote # 元数据类型，remote 表示远程，local 表示本地（默认）
+    metadata-service-port: 20888 # 元数据服务端口
   registries: # 注册中心
     nacos:
-      protocol: nacos
-      timeout: 10s
+      protocol: nacos # 注册中心协议 nacos / apollo / zookeeper / etcd
       address: 127.0.0.1:8848
-  config-center: # 配置中心
-    protocol: nacos               # 配置中心协议 nacos / apollo / zookeeper / etcd
-    address: "127.0.0.1:8848"     # 配置中心地址
-    namespace: "dev"           # 命名空间（nacos 有用）
-    group: "order"                # 配置组
-    data-id: "server.yaml"         # 配置文件 dataId（nacos 用）
-    refresh: true                # 是否刷新配置
+      namespace: "dev" # 命名空间
+      group: "lingmou" # 配置组
+      username: "" # 用户名（没有为空）
+      password: "" # 密码（没有为空）
+      use-as-config-center: true # 是否作为配置中心（nacos配置供配置中心使用，可以不用重复写）
+      use-as-meta-report: true # 是否作为元数据上报（nacos配置供元数据上报使用，可以不用重复写）
   logger: # 日志配置
     level: "info"
     appender: "file" 
@@ -32,9 +34,9 @@ dubbo:
   provider: # 服务提供者配置
     services:
       OrderProvider:
-        interface: lingmou.simple.order.api.OrderService # proto文件中定义的服务名称
+        interface: lingmou.simple.sdk.order.api.OrderService # proto文件中定义的服务名称
   consumer: # 服务消费者配置
     services:
       UserConsumer:
-        interface: lingmou.simple.user.api.UserService
+        interface: lingmou.simple.sdk.user.api.UserService # proto文件中定义的服务名称
         timeout: 10s

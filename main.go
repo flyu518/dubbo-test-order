@@ -12,12 +12,8 @@ import (
 
 // 启动应用
 func main() {
-	// 通过环境变量获取配置
-	nacosConfig := pkg.GetNacosConfig()
-	centerConfig := pkg.GetCenterConfig()
-
 	// 获取 dubbo 实例和服务端
-	instance := pkg.GetDubboInstance(pkg.GetConfigCenterOption(nacosConfig, centerConfig))
+	instance := pkg.GetDubboInstance(pkg.ParseEnvCenterConfig())
 	srv := pkg.GetServer(instance)
 
 	// 获取用户服务

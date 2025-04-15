@@ -4,8 +4,10 @@ go 1.24.1
 
 require (
 	dubbo.apache.org/dubbo-go/v3 v3.3.0
+	github.com/flyu518/dubbo-test-sdk/user v1.0.0
 	github.com/redis/go-redis/v9 v9.7.3
 	github.com/spf13/viper v1.7.0
+	github.com/stretchr/testify v1.8.3
 	gorm.io/driver/mysql v1.5.7
 )
 
@@ -30,7 +32,6 @@ require (
 	github.com/emicklei/go-restful/v3 v3.10.1 // indirect
 	github.com/envoyproxy/go-control-plane v0.11.0 // indirect
 	github.com/envoyproxy/protoc-gen-validate v0.10.0 // indirect
-	github.com/flyu518/dubbo-test-sdk/user v1.0.0 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-resty/resty/v2 v2.7.0 // indirect
 	github.com/go-sourcemap/sourcemap v2.1.3+incompatible // indirect
@@ -56,6 +57,7 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/openzipkin/zipkin-go v0.4.0 // indirect
 	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/polarismesh/polaris-go v1.3.0 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
 	github.com/spf13/afero v1.3.3 // indirect
