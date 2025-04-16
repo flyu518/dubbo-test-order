@@ -36,7 +36,7 @@ dubbo:
       OrderProvider:
         interface: lingmou.simple.sdk.order.api.OrderService # proto文件中定义的服务名称
   consumer: # 服务消费者配置
-    services:
+    references:
       UserConsumer:
         interface: lingmou.simple.sdk.user.api.UserService # proto文件中定义的服务名称
         timeout: 10s
