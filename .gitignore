@@ -22,3 +22,6 @@ Thumbs.db
 
 # 忽略 Windows 可执行文件
 /server.exe
+
+# 忽略 dubbo 元数据文件
+/dubbo.metadata.*

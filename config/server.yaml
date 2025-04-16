@@ -8,6 +8,7 @@ dubbo:
     environment: dev # 部署环境
     metadata-type: remote # 元数据类型，remote 表示远程，local 表示本地（默认）
     metadata-service-port: 20888 # 元数据服务端口
+    metadata-service-protocol: tri # 元数据服务协议
   registries: # 注册中心
     nacos:
       protocol: nacos # 注册中心协议 nacos / apollo / zookeeper / etcd

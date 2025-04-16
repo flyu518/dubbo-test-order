@@ -2,7 +2,8 @@ package main
 
 import (
 	"context"
-	"order/pkg"
+	"order/pkg/global"
+	"order/pkg/util"
 	"os"
 	"testing"
 
@@ -18,9 +19,12 @@ var cli *client.Client
 var srv api.OrderService
 
 func TestMain(m *testing.M) {
+	// 初始化全局变量
+	global.InitGlobal("./config/config.yaml")
+
 	// 获取 dubbo 实例和服务端
-	instance = pkg.GetDubboInstance(pkg.ParseEnvCenterConfig())
-	cli = pkg.GetClient(instance)
+	instance = util.GetDubboInstance(global.ConfigCenterConfig)
+	cli = util.GetDubboClient(instance)
 
 	// 获取服务
 	var err error

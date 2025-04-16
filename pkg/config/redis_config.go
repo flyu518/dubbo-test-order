@@ -14,8 +14,6 @@ type RedisConfig struct {
 	Password string       `mapstructure:"password" yaml:"password" json:"password"`
 	Single   RedisSingle  `mapstructure:"single" yaml:"single" json:"single"`
 	Cluster  RedisCluster `mapstructure:"cluster" yaml:"cluster" json:"cluster"`
-
-	client redis.UniversalClient // 缓存的Redis客户端
 }
 
 // RedisSingle 单节点配置
@@ -29,30 +27,26 @@ type RedisCluster struct {
 	Addrs []string `mapstructure:"addrs" yaml:"addrs" json:"addrs"`
 }
 
-// GetClient 获取Redis客户端（懒加载）
-func (c *RedisConfig) GetClient() (redis.UniversalClient, error) {
-	if c.client != nil {
-		return c.client, nil
-	}
-
+// GetRedis 获取Redis客户端（懒加载）
+func GetRedis(config *RedisConfig) (redis.UniversalClient, error) {
 	var client redis.UniversalClient
 
-	switch c.Mode {
+	switch config.Mode {
 	case "single":
 		// 单节点模式
 		client = redis.NewClient(&redis.Options{
-			Addr:     c.Single.Addr,
-			Password: c.Password,
-			DB:       c.Single.DB,
+			Addr:     config.Single.Addr,
+			Password: config.Password,
+			DB:       config.Single.DB,
 		})
 	case "cluster":
 		// 集群模式
 		client = redis.NewClusterClient(&redis.ClusterOptions{
-			Addrs:    c.Cluster.Addrs,
-			Password: c.Password,
+			Addrs:    config.Cluster.Addrs,
+			Password: config.Password,
 		})
 	default:
-		return nil, fmt.Errorf("不支持的Redis模式: %s", c.Mode)
+		return nil, fmt.Errorf("不支持的Redis模式: %s", config.Mode)
 	}
 
 	// 测试连接
@@ -63,14 +57,5 @@ func (c *RedisConfig) GetClient() (redis.UniversalClient, error) {
 		return nil, fmt.Errorf("Redis连接失败: %s", err)
 	}
 
-	c.client = client
 	return client, nil
-}
-
-// Close 关闭Redis连接
-func (c *RedisConfig) Close() error {
-	if c.client != nil {
-		return c.client.Close()
-	}
-	return nil
 }

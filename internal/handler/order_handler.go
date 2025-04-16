@@ -4,11 +4,25 @@ import (
 	"context"
 
 	"order/internal/service"
+	"order/pkg/util"
 
+	"dubbo.apache.org/dubbo-go/v3"
 	"github.com/dubbogo/gost/log/logger"
 	"github.com/flyu518/dubbo-test-sdk/order/api"
 	userApi "github.com/flyu518/dubbo-test-sdk/user/api"
 )
+
+func GetOrderHandler(instance *dubbo.Instance) *OrderHandler {
+	// 获取用户服务
+	client := util.GetDubboClient(instance)
+	userService, err := userApi.NewUserService(client)
+	if err != nil {
+		panic(err)
+	}
+	return &OrderHandler{
+		UserService: userService,
+	}
+}
 
 // OrderHandler 实现订单服务
 type OrderHandler struct {

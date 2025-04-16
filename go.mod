@@ -5,6 +5,7 @@ go 1.24.1
 require (
 	dubbo.apache.org/dubbo-go/v3 v3.3.0
 	github.com/flyu518/dubbo-test-sdk/user v1.0.0
+	github.com/fsnotify/fsnotify v1.6.0
 	github.com/redis/go-redis/v9 v9.7.3
 	github.com/spf13/viper v1.7.0
 	github.com/stretchr/testify v1.8.3
@@ -32,7 +33,6 @@ require (
 	github.com/emicklei/go-restful/v3 v3.10.1 // indirect
 	github.com/envoyproxy/go-control-plane v0.11.0 // indirect
 	github.com/envoyproxy/protoc-gen-validate v0.10.0 // indirect
-	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-resty/resty/v2 v2.7.0 // indirect
 	github.com/go-sourcemap/sourcemap v2.1.3+incompatible // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
