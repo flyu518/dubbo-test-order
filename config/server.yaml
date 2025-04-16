@@ -28,6 +28,14 @@ dubbo:
       maxBackups: 3 # 保留 3 个文件
       maxAge: 300 # 300天
       compress: true # 压缩
+  otel:
+    tracing:
+      enable: true
+      exporter: jaeger # 你也可以换成 jaeger、zipkin、otlp-http、otlp-grpc
+      endpoint: "http://localhost:14268/api/traces"  # exporter 的地址，stdout 不需要填
+      propagator: w3c # 建议默认
+      sample-mode: ratio
+      sample-ratio: 1.0 # 全量采样
   protocols: # 协议配置
     tripleProtocol:
       name: tri
